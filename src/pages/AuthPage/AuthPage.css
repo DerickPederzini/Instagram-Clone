@@ -1,0 +1,32 @@
+#dark {
+    background-color: rgb(26, 26, 26);
+}
+
+#light {
+    background-color: rgb(240, 240, 240);
+}
+
+#light .css-text{
+    color: black;
+    border-color: black;
+}
+
+#light ::placeholder{
+    color: black;
+}
+
+#light .text-OR{
+    color: black;
+}
+
+#light .GetApp-text{
+    color: black;
+}
+
+#dark .css-text{
+    color: rgb(223, 223, 223);
+}
+
+#dark ::placeholder{
+    color: rgb(219, 219, 219);
+}

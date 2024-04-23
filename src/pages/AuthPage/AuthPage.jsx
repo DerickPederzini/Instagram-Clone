@@ -1,39 +1,62 @@
 import { Box, Container, Flex, Image, VStack } from "@chakra-ui/react"
 import AuthForm from "../../components/AuthForm/AuthForm"
+import { createContext } from "react";
+import { useState } from "react";
+import "./AuthPage.css"
+import { Switch } from "@chakra-ui/react";
+
+export const themeContext = createContext(null);
 
 const AuthPage = () => {
+
+    const [theme, setTheme] = useState("light");
+
+    const toggleTheme = () => {
+  
+      setTheme((curr) => (curr === "light" ? "dark": "light"));
+  
+    }
+
     return(
-        <Flex minH={"100vh"} justifyContent={"center"} alignItems={"center"} px={4}>
-            <Container maxW={"container.md"} padding={0}>
-                <Flex justifyContent={"center"} alignItems={"center"} gap={10}>
+        <themeContext.Provider value={{theme, toggleTheme}}>
+            <div className="app" id={theme}>
+                <Flex minH={"100vh"} justifyContent={"center"} alignItems={"center"} px={4}>
+                    <Container maxW={"container.md"} padding={0}>
+                        <Flex justifyContent={"center"} alignItems={"center"} gap={10}>
 
-                    {/* Left Hand Side */}
-                    <Box display={{base:"none", md:"block"}}>
-                        <Image src="/auth.png" h={650} alt="Phone Image" />
-                    </Box>
-        
-                    {/* Right Hand Side */}
-                    <VStack spacing={4} align={"stretch"}>
+                            {/* Left Hand Side */}
+                            <Box display={{base:"none", md:"block"}}>
+                                <Image src="/auth.png" h={650} alt="Phone Image" />
+                            </Box>
+                
+                            {/* Right Hand Side */}
+                            <VStack spacing={4} align={"stretch"}>
 
-                        <AuthForm />
+                                <div className="background-button-color">
+                                    <Switch size='lg' onChange={toggleTheme} checked={theme === "light"} colorScheme="cyan"/>
+                                </div>
 
-                        <Box textAlign={"center"} >
-                            Get the App
-                        </Box>
+                                <AuthForm />
 
-                        <Flex gap={5} justifyContent={"center"}>
+                                <Box textAlign={"center"} className="GetApp-text">
+                                    Get the App
+                                </Box>
 
-                            <Image src="/playstore.png" h={10} alt="PlayStore Logo"/>
-                            <Image src="/microsoft.png" h={10} alt="Microsoft Logo"/>
+                                <Flex gap={5} justifyContent={"center"}>
+
+                                    <Image src="/playstore.png" h={10} alt="PlayStore Logo"/>
+                                    <Image src="/microsoft.png" h={10} alt="Microsoft Logo"/>
+
+                                </Flex>
+                                
+                            </VStack>
 
                         </Flex>
                         
-                    </VStack>
-
+                    </Container>
                 </Flex>
-                
-            </Container>
-        </Flex>
+            </div>
+        </themeContext.Provider>
     )
 }
 
