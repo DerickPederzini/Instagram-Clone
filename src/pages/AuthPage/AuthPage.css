@@ -6,7 +6,7 @@
     background-color: rgb(240, 240, 240);
 }
 
-#light .css-text{
+#light .css-input{
     color: black;
     border-color: black;
 }
@@ -19,11 +19,11 @@
     color: black;
 }
 
-#light .GetApp-text{
+#light .css-text{
     color: black;
 }
 
-#dark .css-text{
+#dark .css-input{
     color: rgb(223, 223, 223);
 }
 

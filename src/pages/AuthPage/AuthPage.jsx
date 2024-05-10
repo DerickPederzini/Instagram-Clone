@@ -33,19 +33,19 @@ const AuthPage = () => {
                             <VStack spacing={4} align={"stretch"}>
 
                                 <div className="background-button-color">
-                                    <Switch size='lg' onChange={toggleTheme} checked={theme === "light"} colorScheme="cyan"/>
+                                    <Switch size='lg' textShadow={"1px 1px #000000"} onChange={toggleTheme} checked={theme === "light"} colorScheme="cyan"/>
                                 </div>
 
                                 <AuthForm />
 
-                                <Box textAlign={"center"} className="GetApp-text">
+                                <Box textAlign={"center"} className="css-text">
                                     Get the App
                                 </Box>
 
                                 <Flex gap={5} justifyContent={"center"}>
 
-                                    <Image src="/playstore.png" h={10} alt="PlayStore Logo"/>
-                                    <Image src="/microsoft.png" h={10} alt="Microsoft Logo"/>
+                                    <Image src="/playstore.png" h={10} alt="PlayStore Logo" cursor={"pointer"}/>
+                                    <Image src="/microsoft.png" h={10} alt="Microsoft Logo" cursor={"pointer"}/>
 
                                 </Flex>
                                 
