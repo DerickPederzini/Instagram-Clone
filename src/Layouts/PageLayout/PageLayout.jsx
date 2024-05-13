@@ -2,6 +2,9 @@ import { useLocation } from "react-router-dom";
 import SideBar from "../../components/SideBar/SideBar";
 import { Flex, Box } from "@chakra-ui/react";
 
+//Instead of adding the sidebarcomponent for every page, I just added it once to the page layout component and wraped its children with it.
+//That way, it is possible to have a sidebar component for every page since Page Layout is reutilizable
+
 const PageLayout = ({children}) => {
 
   const {pathname} = useLocation();

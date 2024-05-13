@@ -13,6 +13,7 @@ const AuthForm = () => {
         confirmPassword:"",
     });
 
+    //used for changing the location
     const navigate = useNavigate();
 
     const handleAuth = () => {
@@ -27,6 +28,10 @@ const AuthForm = () => {
     return (
         <>
             <Box border={"1px solid"} color={"pink.500"} borderRadius={4} padding={5}>
+
+                {/* The difference between stack and flex is that a stack will not 
+                occupy the entire width of the container, it will change its size depending
+                on what is inside of it*/}
                 <VStack spacing={4}>
 
                     <Image src="/logo.png" h={32} cursor={"pointer"} alt="Instagram Logo" />
