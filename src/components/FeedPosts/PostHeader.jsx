@@ -4,14 +4,12 @@ import HeaderModel from '../Modals/PostHeaderModal/HeaderModel';
 import { useState } from 'react';
 
 
-const PostHeader = () => {
+const PostHeader = ({username, avatar}) => {
 
     let weekDay = parseInt(Math.random() * 100) + 1;
     let weekOrYear = weekDay < 52 ? "w" : "y"
 
     const { isOpen, onOpen, onClose } = useDisclosure()
-
-
 
     return (
         <Flex
@@ -21,9 +19,9 @@ const PostHeader = () => {
             my={2}>
 
             <Flex alignItems={"center"} gap={2}>
-                <Avatar src='/img1.png' alt={"User profile pic"} size={"sm"} />
+                <Avatar src={avatar} alt={"User profile pic"} size={"sm"} />
                 <Flex fontSize={12} fontWeight={"bold"} gap={"2"}>
-                    Woman
+                    {username}
                     <Box color={"gray.500"}>
                         • {weekDay > 52 ? parseInt(weekDay / 10) : weekDay} {weekOrYear}
                     </Box>
