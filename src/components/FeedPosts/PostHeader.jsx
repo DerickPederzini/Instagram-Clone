@@ -1,7 +1,6 @@
 import { Avatar, Box, Button, Flex, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useDisclosure } from '@chakra-ui/react'
 import { IoIosMore } from "react-icons/io";
-import HeaderModel from '../Modals/PostHeaderModal/HeaderModel';
-import { useState } from 'react';
+import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
 
 
 const PostHeader = ({username, avatar}) => {
@@ -19,13 +18,20 @@ const PostHeader = ({username, avatar}) => {
             my={2}>
 
             <Flex alignItems={"center"} gap={2}>
-                <Avatar src={avatar} alt={"User profile pic"} size={"sm"} />
+
+                <SkeletonCircle isLoaded>
+                    <Avatar src={avatar} alt={"User profile pic"} size={"sm"} />
+                </SkeletonCircle>
+
+                <SkeletonText isLoaded> 
+
                 <Flex fontSize={12} fontWeight={"bold"} gap={"2"}>
                     {username}
                     <Box color={"gray.500"}>
                         • {weekDay > 52 ? parseInt(weekDay / 10) : weekDay} {weekOrYear}
                     </Box>
                 </Flex>
+                </SkeletonText>
             </Flex>
 
             <Box>
