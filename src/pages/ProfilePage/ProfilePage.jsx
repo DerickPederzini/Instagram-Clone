@@ -1,23 +1,39 @@
-import { Box, Container, Flex } from "@chakra-ui/react"
+import { Box, Container, Flex, Text } from "@chakra-ui/react"
 import ProfileHeader from "../../components/UserProfile/ProfileHeader"
+import ProfilePosts from "../../components/UserProfile/ProfilePosts"
+import ProfileTabs from "../../components/UserProfile/ProfileTabs"
 
 const ProfilePage = () => {
   return (
     <>
-        <Container maxW={"container.lg"}>
+        <Container maxW={"container.lg"}
+        py={5}>
 
             <Flex 
-            gap={20} 
-            direction={"column"}>
+            py={10}
+            px={4}
+            pl={{base:4, md:10}}
+            maxW={"full"}
+            mx={"auto"}
+            direction={"column"}>   
 
-                <Box flex={2} py={10} borderBottom={"2px solid"} borderColor={"gray.700"}>
                     <ProfileHeader />
-                </Box>
-            
-                <Box flex={2} py={10}>
-                    a
-                </Box>
+                    
             </Flex>
+
+            <Flex
+            px={{base:2, sm:4}}
+            maxW={"full"}
+            mx={"auto"}
+            borderTop={'1px solid'}
+            borderColor={"whiteAlpha.300"}
+            direction={"column"}
+            >
+                <ProfileTabs />
+                <ProfilePosts />
+                
+            </Flex>
+           
 
         </Container>
       

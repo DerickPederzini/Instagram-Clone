@@ -2,7 +2,7 @@ import { Box, Button, Flex, Input, InputGroup, InputRightElement, Text} from '@c
 import React, { useState } from 'react'
 import { CommentLogo, NotificationsLogo, UnlikeLogo } from '../../assets/constants';
 
-const PostFooter = ({username}) => {
+const PostFooter = ({username, isProfilePage}) => {
 
   let randomLikes = parseInt(Math.random()*5000 + 1);
 
@@ -22,7 +22,7 @@ const PostFooter = ({username}) => {
   }
 
   return (
-    <Box my={6}>
+    <Box my={6} marginTop={"auto"}>
 
       <Flex alignItems={"center"} gap={4} w={"full"} pt={0} mb={2} mt={3}>
 
@@ -43,16 +43,20 @@ const PostFooter = ({username}) => {
         {likes} likes
       </Text>
 
-      <Text fontSize={"sm"} fontWeight={700}>
-       {username}{" "} 
-        <Text as={"span"} fontWeight={400}> 
-          Feeling good
-        </Text> 
-      </Text>
-
-      <Text 
-      color={"gray.500"} 
-      cursor={"pointer"}> View all 1000 comments</Text>
+      {!isProfilePage && (
+        <>
+          <Text fontSize={"sm"} fontWeight={700}>
+          {username}{" "} 
+          <Text as={"span"} fontWeight={400}> 
+            Feeling good
+          </Text> 
+        </Text>
+  
+        <Text 
+        color={"gray.500"} 
+        cursor={"pointer"}> View all 1000 comments</Text>
+        </>
+      )}
 
       <Flex alignItems={"center"} gap={2} justify={"space-between"} w={"full"}>
 

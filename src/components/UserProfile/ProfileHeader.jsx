@@ -1,40 +1,68 @@
-import { Avatar, Box, Button, Flex, Text} from '@chakra-ui/react'
+import { Avatar, AvatarGroup, Box, Button, Flex, Text, VStack} from '@chakra-ui/react'
 import React from 'react'
 
 const ProfileHeader = () => {
 
-  return <Flex flex={"column"} mx={"50px"}>
+  return <Flex 
+        gap={{base:4, sm:12}}
+        mx={2}
+        direction={{base:"column", sm:"row"}}
+        >
 
-            <Avatar src='img1.png' size={'2xl'} alt="User profile pic"/>
+            <AvatarGroup size={{base:"xl", md:"2xl"}} justifySelf={"center"} alignSelf={"flex-start"} mx={"auto"}>
+                <Avatar src='img1.png' alt="User profile pic"/>
+            </AvatarGroup>
         
-            <Flex direction={"column"}>
-                <Flex mx={"50px"} gap={3}> 
-                    <Text fontSize={"20px"}>
+            <VStack alignItems={"start"} gap={2} mx={"auto"} flex={1}>
+                <Flex 
+                gap={4} 
+                direction={{base:'column', sm:"row"}}
+                justifyContent={{base:"center", sm:"flex-start"}}
+                alignItems={"center"}
+                w={"full"}> 
+
+                    <Text fontSize={{base:"sm", md:"lg"}}>
                         derick_pdzn
                     </Text>
+
+                    <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
+
+                        <Button size={{base:"xs", md:"sm"}} bg={"gray.700"}>
+                            Edit profile
+                        </Button>
+                        <Button size={{base:"xs", md:"sm"}} bg={"gray.700"}>
+                            View archive
+                        </Button>
                     
-                    <Button size={"sm"} bg={"gray.700"}>
-                        Edit profile
-                    </Button>
-                    <Button size={"sm"} bg={"gray.700"}>
-                        View archive
-                    </Button>
-                    
+                    </Flex>
+
                 </Flex>
                 
-                <Flex mx={"50px"} my={"12px"} gap={3} justifyContent={"space-between"}>
-                    <Text>
-                        12 posts
+        
+
+                <Flex 
+                gap={{base:2, sm:4, md:8}} 
+                alignItems={"center"} 
+
+                > 
+
+                    <Text fontSize={{base:"xs", md:"sm"}}>
+                        <Text  as="span" fontWeight={"bold"} mr={1}>12</Text>
+                        posts
                     </Text>
-                    <Text cursor={"pointer"}>
-                        134 followers
+                    <Text cursor={"pointer"} fontSize={{base:"xs", md:"sm"}}>
+                        <Text  as="span" fontWeight={"bold"} mr={1}>134</Text>
+                        followers
                     </Text>
-                    <Text cursor={"pointer"}>
-                        208 following
+                    <Text cursor={"pointer"} fontSize={{base:"xs", md:"sm"}}> 
+                        <Text  as="span" fontWeight={"bold"} mr={1}>208</Text>
+                        following
                     </Text>
+
                 </Flex>
 
-                <Box mx={"50px"} my={"12px"} gap={3}>
+
+                <Box my={"12px"}>
                     <Flex flexDirection={"column"}>
                         <Text fontWeight={"bold"} fontSize={14}>
                             Derick Pederzini
@@ -48,7 +76,7 @@ const ProfileHeader = () => {
                     </Flex>
                 </Box>
 
-            </Flex>
+            </VStack>
             
         </Flex>
 }
