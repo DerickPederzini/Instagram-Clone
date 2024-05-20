@@ -4,6 +4,7 @@ import AuthPage from "./pages/AuthPage/AuthPage"
 import PageLayout from "./Layouts/PageLayout/PageLayout"
 import ProfilePage from "./pages/ProfilePage/ProfilePage"
 
+
 function App() {
 
   return (
