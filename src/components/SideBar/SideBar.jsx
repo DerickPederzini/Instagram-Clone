@@ -35,7 +35,7 @@ function SideBar() {
     {
       icon: <Avatar size={"sm"} name="Derick" src=" /profilepic.png"/>,
       text: "Profile",
-      link: "/profile",
+      link: "/derick_pdzn",
     },
 
   ];

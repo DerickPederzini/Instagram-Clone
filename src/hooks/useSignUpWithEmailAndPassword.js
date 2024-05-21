@@ -6,11 +6,14 @@ import {
     firestore
 } from '../firebase/firebase';
 import {
+    collection,
     doc,
-    setDoc
+    getDocs,
+    query,
+    setDoc,
+    where
 } from "firebase/firestore";
 import useShowToast from './useShowToast';
-import { useStore } from 'zustand';
 import useAuthStore from '../store/authStore';
 
 
@@ -30,6 +33,15 @@ const UseSignUpWithEmailAndPassword = () => {
 
         if (!inputs.email || !inputs.password || !inputs.username || !inputs.fullname) {
             showToast("Error", "Please Fill All the Fields", "error")
+            return;
+        }
+
+        const usersReference = collection(firestore, "users");
+        const dbQuery = query(usersReference, where( "username", "==", inputs.username,));
+        const querySnapshot = await getDocs(dbQuery);
+
+        if(!querySnapshot.empty){
+            showToast("Error", "Username Already exists", "error");
             return;
         }
 
@@ -64,7 +76,7 @@ const UseSignUpWithEmailAndPassword = () => {
             showToast("Error", error.message, "error")
 
         }
-    };
+    }
 
     return {
         loading,
