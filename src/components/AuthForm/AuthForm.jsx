@@ -31,7 +31,7 @@ const AuthForm = () => {
                         <Box flex={2} h={0.5} bg={"pink.500"}/>
                     </Flex>
 
-                    <GoogleAuth />
+                    <GoogleAuth prefix={isLogin ? "Log in" : "Sign up" } />
 
                 </VStack>
             </Box>

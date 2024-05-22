@@ -6,7 +6,7 @@ import {
 } from '../firebase/firebase';
 import useShowToast from './useShowToast';
 import useAuthStore from '../store/authStore';
-import { doc, getDoc, getDocs } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 
 
 const useLogin = () => {    
