@@ -1,9 +1,22 @@
-import { Box, Container, Flex, Text } from "@chakra-ui/react"
+import { Box, Container, Flex, Link, Skeleton, SkeletonCircle, Text, VStack } from "@chakra-ui/react"
 import ProfileHeader from "../../components/UserProfile/ProfileHeader"
 import ProfilePosts from "../../components/UserProfile/ProfilePosts"
 import ProfileTabs from "../../components/UserProfile/ProfileTabs"
+import useGetUserProfileByUsername from "../../hooks/useGetUserProfileByUsername"
+import { useParams } from "react-router-dom"
+import { Link as RouterLink } from "react-router-dom" 
 
 const ProfilePage = () => {
+
+  const {username} = useParams();
+  const {isLoading, userProfile} = useGetUserProfileByUsername(username)
+
+  const userNotFound = !isLoading && !userProfile;
+
+  if(userNotFound){
+    return <UserNotFound />;
+  }
+
   return (
     <>
         <Container maxW={"container.lg"}
@@ -17,8 +30,9 @@ const ProfilePage = () => {
             mx={"auto"}
             direction={"column"}>   
 
-                    <ProfileHeader />
-                    
+              {!isLoading && userProfile &&  <ProfileHeader />}
+              {isLoading && <ProfileHeaderSkeleton />}
+
             </Flex>
 
             <Flex
@@ -42,3 +56,36 @@ const ProfilePage = () => {
 }
 
 export default ProfilePage
+
+const ProfileHeaderSkeleton = () => {
+	return (
+		<Flex
+			gap={{ base: 4, sm: 10 }}
+			py={10}
+			direction={{ base: "column", sm: "row" }}
+			justifyContent={"center"}
+			alignItems={"center"}
+		>
+			<SkeletonCircle size='24' />
+
+			<VStack alignItems={{ base: "center", sm: "flex-start" }} gap={2} mx={"auto"} flex={1}>
+				<Skeleton height='12px' width='150px' />
+				<Skeleton height='12px' width='100px' />
+			</VStack>
+		</Flex>
+	);
+};
+
+
+const UserNotFound = () => {
+  return (
+    <Flex flexDir={"column"} textAlign={"center"} mx={"auto"}>
+      <Text fontSize={"2xl"}>
+          User Not Found
+      </Text>
+      <Link as={RouterLink} to={"/"} color={"blue.500"} w={"max-content"} mx={"auto"}>
+          Go Home
+      </Link>
+    </Flex>
+  )
+}
