@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useUpdatePassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useState } from 'react'
 import { auth, firestore, storage } from '../firebase/firebase';
 import useAuthStore from '../store/authStore';
 import useShowToast from './useShowToast';
@@ -53,10 +52,7 @@ const useEditProfile = () => {
         showToast("Error", error.message, "error")
 
        }
-
-    }
-
-    return {editProfile, isUpdating}
-}
-
+       
+       return {editProfile, isUpdating} } 
+    } 
 export default useEditProfile

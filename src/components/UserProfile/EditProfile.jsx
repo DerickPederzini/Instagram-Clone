@@ -31,7 +31,7 @@ const EditProfile = ({ isOpen, onClose }) => {
     password: "",
   });
   const authUser = useAuthStore((state) => state.user);
-  const fileRef = useRef(null);
+  const fileRef = useRef(null);jjjj
   const { handleImageChange, selectedFile, setSelectedFile} = usePreviewImg();
   const showToast = useShowToast();
 
