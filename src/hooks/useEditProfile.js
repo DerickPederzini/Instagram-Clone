@@ -22,6 +22,7 @@ const useEditProfile = () => {
        }
        setIsUpdating(true);
 
+       //a storageReference is used, in this case, to update metadata
        const storageRef = ref(storage, `profilePics/${authUser.uid}`);
        const userDocRef = doc(firestore, "users", authUser.uid);
 
